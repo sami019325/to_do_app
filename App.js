@@ -1,5 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import AddTask from './Components/AddTask';
 import TaskBox from './Components/TaskBox';
 
 export default function App() {
@@ -9,8 +10,9 @@ export default function App() {
       <View style={styles.headingBG}>
         <Text style={styles.headingContainer}>All Tasks</Text>
       </View>
-      {/* Body------------------ */}
 
+
+      {/* Body------------------ */}
       <ScrollView style={styles.body}>
         <TaskBox></TaskBox>
         <TaskBox></TaskBox>
@@ -32,6 +34,7 @@ export default function App() {
         <TaskBox></TaskBox>
         <TaskBox></TaskBox>
       </ScrollView>
+      <AddTask></AddTask>
     </View>
   );
 }
@@ -45,7 +48,9 @@ const styles = StyleSheet.create({
     top: 10,
   },
   headingContainer: {
-    backgroundColor: '#674188',
+    backgroundColor: 'rgba(255, 255, 255, 0.13)',
+    // backdrop-filter: blur(8px);
+    blur: 8,
     textAlign: 'center',
     top: 10,
     paddingTop: 40,
