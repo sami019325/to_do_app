@@ -1,7 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
 import { ScrollView, StyleSheet, Text, View, Image, TextInput, Button } from 'react-native';
-import AddTask from './Components/AddTask';
 import TaskBox from './Components/TaskBox';
 
 export default function App() {
@@ -13,10 +12,12 @@ export default function App() {
   ]
 
   const [tasks, setTasks] = useState(tasksDemo)
-  const [taskText, setTaskText] = useState('sami')
+  const [taskText, setTaskText] = useState('Add task')
+  const [taskTextDefault, settaskTextDefault] = useState('')
   const AddTaskFunction = () => {
     let newTasK = { id: tasks.length + 1, ss: taskText }
-    setTasks([newTasK, ...tasks])
+    setTasks([newTasK, ...tasks]);
+    settaskTextDefault(true)
   }
 
 
@@ -40,7 +41,7 @@ export default function App() {
       {/* <AddTask></AddTask> */}
 
       <View style={styles.inputFiledContainer}>
-        <TextInput placeholder='Write something' style={styles.inputFiled} onChangeText={newText => setTaskText(newText)}></TextInput>
+        <TextInput defaultValue={taskTextDefault ? '' : taskText} placeholder='Write something' style={styles.inputFiled} onChangeText={newText => setTaskText(newText) + settaskTextDefault(false)}></TextInput>
         <View style={styles.inputFiledSendBtnContainer}>
           {/* <Text>{taskText}</Text> */}
           <Button
