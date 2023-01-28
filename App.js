@@ -18,6 +18,8 @@ export default function App() {
     let newTasK = { id: tasks.length + 1, ss: taskText }
     setTasks([newTasK, ...tasks])
   }
+
+
   return (
     <View style={styles.container}>
       {/* Heading ---------------- */}
@@ -28,9 +30,9 @@ export default function App() {
 
       {/* Body------------------ */}
       <ScrollView style={styles.body}>
-        {/* <Text>{tasks[1].ss}</Text> */}
+        {/* <Text>{tasks[11].ss}</Text> */}
         {
-          tasks.map(t => <TaskBox key={t.id} text={t.ss}></TaskBox>)
+          tasks.map(t => <TaskBox key={t.id} text={t.ss} tasks={tasks} setTasks={setTasks}></TaskBox>)
         }
       </ScrollView>
 

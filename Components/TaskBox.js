@@ -1,17 +1,26 @@
 
 import React from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Button, Image, Pressable, StyleSheet, Text, View } from 'react-native';
 import doneBtn from './../assets/done-btn.svg'
-const TaskBox = ({ text }) => {
+const TaskBox = ({ text, id, tasks, setTasks }) => {
+    // delete completed task 
+    const handleDelete = (id) => {
+        let totalTasks = [...tasks]
+        totalTasks.splice(id, 1)
+        // const leftTask = text.filter(tas => tas.id !== id)
+        // leftTask.map(l => totalTasks.push(l))
+        setTasks(totalTasks)
+    }
     return (
         <View style={style.taskBoxContainer}>
             <View style={style.taskBoxTextArea}>
                 <View style={style.taskBoxCircle}></View>
                 <Text style={style.taskBoxText}>{text}</Text>
             </View>
-            <View style={style.taskBoxDoneBtn}>
+            {/* <Button title='done' onPress={() => handleDelete(id)}></Button> */}
+            <Pressable style={style.taskBoxDoneBtn} onPress={() => handleDelete(id)}>
                 <Image source={require('./../assets/fi_check-circle.png')}></Image>
-            </View>
+            </Pressable>
         </View>
     );
 
@@ -52,9 +61,8 @@ const style = StyleSheet.create({
         borderRadius: 50,
     },
     taskBoxDoneBtn: {
-        width: 40,
-        height: 40,
-        backgroundColor: '#FFFFFF',
+        width: 50,
+        height: 50,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
