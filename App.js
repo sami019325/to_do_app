@@ -1,9 +1,21 @@
 import { StatusBar } from 'expo-status-bar';
+import { useState } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import AddTask from './Components/AddTask';
 import TaskBox from './Components/TaskBox';
 
 export default function App() {
+
+  const tasksDemo = [
+    { ss: 'dddd' },
+    { ss: 'dddd32' },
+    { ss: 'dddd4' },
+    { ss: 'dddd5' },
+    { ss: 'dddd6' },
+  ]
+
+  const [tasks, setTasks] = useState(tasksDemo)
+
   return (
     <View style={styles.container}>
       {/* Heading ---------------- */}
@@ -14,25 +26,10 @@ export default function App() {
 
       {/* Body------------------ */}
       <ScrollView style={styles.body}>
-        <TaskBox></TaskBox>
-        <TaskBox></TaskBox>
-        <TaskBox></TaskBox>
-        <TaskBox></TaskBox>
-        <TaskBox></TaskBox>
-        <TaskBox></TaskBox>
-        <TaskBox></TaskBox>
-        <TaskBox></TaskBox>
-        <TaskBox></TaskBox>
-        <TaskBox></TaskBox>
-        <TaskBox></TaskBox>
-        <TaskBox></TaskBox>
-        <TaskBox></TaskBox>
-        <TaskBox></TaskBox>
-        <TaskBox></TaskBox>
-        <TaskBox></TaskBox>
-        <TaskBox></TaskBox>
-        <TaskBox></TaskBox>
-        <TaskBox></TaskBox>
+        <Text>{tasks[1].ss}</Text>
+        {
+          tasks.map(t => <TaskBox text={t.ss}></TaskBox>)
+        }
       </ScrollView>
       <AddTask></AddTask>
     </View>

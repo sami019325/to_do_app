@@ -1,12 +1,27 @@
-import React from 'react';
-import { Button, Image, StyleSheet, TextInput, View } from 'react-native';
+import React, { useState } from 'react';
+import { Button, Image, StyleSheet, TextInput, View, Text } from 'react-native';
 
 const AddTask = () => {
+    const [taskText, setTaskText] = useState('sami')
+    const AddTaskFunction = () => {
+        console.log('clicked');
+        let text = document.getElementById('taskText').ariaValueMax;
+
+        // setTaskText(text)
+    }
     return (
         <View style={styles.inputFiledContainer}>
-            <TextInput placeholder='Write something' style={styles.inputFiled}></TextInput>
+            <TextInput id='taskText' placeholder='Write something' style={styles.inputFiled} onChangeText={newText => setTaskText(newText)}></TextInput>
             <View style={styles.inputFiledSendBtnContainer}>
-                <Image style={styles.inputFiledSendBtn} source={require('../assets/fi_send.png')}></Image>
+                <Text>{taskText}</Text>
+                {/* <Button
+                    onPress={AddTask}
+                    title="Learn More"
+                    color="#841584"
+                    accessibilityLabel="Learn more about this purple button"
+                /> */}
+                <Image onPress={() => AddTaskFunction} style={styles.inputFiledSendBtn} source={require('../assets/fi_send.png')}></Image>
+
             </View>
         </View>
     );

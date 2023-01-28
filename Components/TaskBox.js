@@ -1,12 +1,13 @@
+
 import React from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
 import doneBtn from './../assets/done-btn.svg'
-const TaskBox = () => {
+const TaskBox = (props) => {
     return (
         <View style={style.taskBoxContainer}>
             <View style={style.taskBoxTextArea}>
                 <View style={style.taskBoxCircle}></View>
-                <Text style={style.taskBoxText}>sami ahned is going to a partty tonings</Text>
+                <Text style={style.taskBoxText}>{props.text}</Text>
             </View>
             <View style={style.taskBoxDoneBtn}>
                 <Image source={require('./../assets/fi_check-circle.png')}></Image>
