@@ -1,11 +1,37 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import TaskBox from './Components/TaskBox';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      {/* Heading ---------------- */}
+      <View style={styles.headingBG}>
+        <Text style={styles.headingContainer}>All Tasks</Text>
+      </View>
+      {/* Body------------------ */}
+
+      <ScrollView style={styles.body}>
+        <TaskBox></TaskBox>
+        <TaskBox></TaskBox>
+        <TaskBox></TaskBox>
+        <TaskBox></TaskBox>
+        <TaskBox></TaskBox>
+        <TaskBox></TaskBox>
+        <TaskBox></TaskBox>
+        <TaskBox></TaskBox>
+        <TaskBox></TaskBox>
+        <TaskBox></TaskBox>
+        <TaskBox></TaskBox>
+        <TaskBox></TaskBox>
+        <TaskBox></TaskBox>
+        <TaskBox></TaskBox>
+        <TaskBox></TaskBox>
+        <TaskBox></TaskBox>
+        <TaskBox></TaskBox>
+        <TaskBox></TaskBox>
+        <TaskBox></TaskBox>
+      </ScrollView>
     </View>
   );
 }
@@ -13,8 +39,18 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#FFFBF5',
+  },
+  body: {
+    top: 10,
+  },
+  headingContainer: {
+    backgroundColor: '#674188',
+    textAlign: 'center',
+    top: 10,
+    paddingTop: 40,
+    paddingBottom: 10,
+    fontWeight: 'bold',
+    fontSize: 24,
   },
 });
