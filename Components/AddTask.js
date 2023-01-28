@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import { Button, Image, StyleSheet, TextInput, View, Text } from 'react-native';
 
 const AddTask = () => {
+    let x = 0;
     const [taskText, setTaskText] = useState('sami')
     const AddTaskFunction = () => {
-        console.log('clicked');
-        let text = document.getElementById('taskText').ariaValueMax;
-
-        // setTaskText(text)
+        let newTasK = { id: 3, ss: 'sssff' }
+        let oldTask = proprs.tasks
+        setTasks(newTasK, ...oldTask)
     }
+
     return (
         <View style={styles.inputFiledContainer}>
             <TextInput id='taskText' placeholder='Write something' style={styles.inputFiled} onChangeText={newText => setTaskText(newText)}></TextInput>
@@ -59,4 +60,4 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     }
 })
-export default AddTask;
+// export default AddTask;

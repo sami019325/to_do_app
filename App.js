@@ -1,21 +1,23 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Text, View, Image, TextInput, Button } from 'react-native';
 import AddTask from './Components/AddTask';
 import TaskBox from './Components/TaskBox';
 
 export default function App() {
 
   const tasksDemo = [
-    { ss: 'dddd' },
-    { ss: 'dddd32' },
-    { ss: 'dddd4' },
-    { ss: 'dddd5' },
-    { ss: 'dddd6' },
+    { id: 0, ss: 'dddd' },
+    { id: 1, ss: 'dddd' },
+
   ]
 
   const [tasks, setTasks] = useState(tasksDemo)
-
+  const [taskText, setTaskText] = useState('sami')
+  const AddTaskFunction = () => {
+    let newTasK = { id: tasks.length + 1, ss: taskText }
+    setTasks([newTasK, ...tasks])
+  }
   return (
     <View style={styles.container}>
       {/* Heading ---------------- */}
@@ -26,12 +28,30 @@ export default function App() {
 
       {/* Body------------------ */}
       <ScrollView style={styles.body}>
-        <Text>{tasks[1].ss}</Text>
+        {/* <Text>{tasks[1].ss}</Text> */}
         {
-          tasks.map(t => <TaskBox text={t.ss}></TaskBox>)
+          tasks.map(t => <TaskBox key={t.id} text={t.ss}></TaskBox>)
         }
       </ScrollView>
-      <AddTask></AddTask>
+
+
+      {/* <AddTask></AddTask> */}
+
+      <View style={styles.inputFiledContainer}>
+        <TextInput placeholder='Write something' style={styles.inputFiled} onChangeText={newText => setTaskText(newText)}></TextInput>
+        <View style={styles.inputFiledSendBtnContainer}>
+          {/* <Text>{taskText}</Text> */}
+          <Button
+            onPress={AddTaskFunction}
+            title="ADD"
+            fontSize="12px"
+            color="#841584"
+            accessibilityLabel="Learn more about this purple button"
+          />
+          {/* <Image onPress={() => AddTaskFunction + setTasks({ id: 3, ss: 'ssami' })} style={styles.inputFiledSendBtn} source={require('./assets/fi_send.png')}></Image> */}
+
+        </View>
+      </View>
     </View>
   );
 }
@@ -55,4 +75,39 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 24,
   },
+
+  // add text css
+  inputFiledContainer: {
+    backgroundColor: '#C3ACD0',
+    bottom: 0,
+    padding: 5,
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+
+  },
+  inputFiled: {
+    width: '80%',
+    innerHeight: 50,
+    padding: 5,
+    paddingLeft: 20,
+    paddingRight: 20,
+    borderRadius: 20,
+    margin: 5,
+    backgroundColor: '#FFFBF5',
+    fontSize: 18
+  },
+  inputFiledSendBtn: {
+    with: 25,
+    height: 25,
+  },
+  inputFiledSendBtnContainer: {
+    width: '20%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  inputFiledSendAddBtn: {
+    fontSize: 28,
+  }
 });
